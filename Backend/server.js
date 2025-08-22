@@ -16,8 +16,6 @@ const app = express();
 
 app.use(cors({
     // origin:"*",
-    origin: ["https://interviewedge.netlify.app/"], // frontend domain
-    credentials: true,
     methods:["GET","POST","PUT","DELETE"],
     allowedHeaders:["Content-Type","Authorization"],
 }));
