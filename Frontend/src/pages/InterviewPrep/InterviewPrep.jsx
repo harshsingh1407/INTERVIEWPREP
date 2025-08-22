@@ -111,7 +111,7 @@ const InterviewPrep = () => {
   },[])
   return (
    <DashboardLayout>
-    <RoleInfoHeader role={sessionData?.role || ""} topicsToFocus={sessionData?.topicsToFocus || ""} experience={sessionData?.experience || "-"} questions={sessionData?.questions?.length || "-"} description={sessionData?.description || ""} lastUpdated={sessionData?.updatedAt?moment(sessionData.updatedAt).format("Do MM YYYY"):""}/>
+    <RoleInfoHeader role={sessionData?.role || ""} topicsToFocus={sessionData?.topicsToFocus || ""} experience={sessionData?.experience ?? 0} questions={sessionData?.questions?.length || "-"} description={sessionData?.description || ""} lastUpdated={sessionData?.updatedAt?moment(sessionData.updatedAt).format("Do MM YYYY"):""}/>
     <div className='container mx-auto pt-4 pb-4 px-4 md:px-0'>
       <h2 className='text-lg font-semibold color-black'>Interview Q&A</h2>
       <div className='grid grid-cols-12 gap-4 mt-5 mb-10'>
