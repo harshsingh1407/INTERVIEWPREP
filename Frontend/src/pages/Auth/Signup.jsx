@@ -7,6 +7,7 @@ import axiosInstance from '../../utils/axiosInstance';
 import { API_PATHS } from '../../utils/apiPaths';
 import uploadImage from '../../utils/uploadImage';
 import { validateEmail } from '../../utils/helper';
+import SpinnerLoader from '../../components/Loaders/SpinnerLoader';
 
 const Signup = ({ setcurrentPage }) => {
   const [profilePic, setprofilePic] = useState(null);
@@ -14,6 +15,7 @@ const Signup = ({ setcurrentPage }) => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [error, seterror] = useState(null);
+  const [isLoading, setisLoading] = useState(false);
 
   const {updateUser} = useContext(UserContext)
   const navigate = useNavigate(); 
@@ -39,6 +41,7 @@ const Signup = ({ setcurrentPage }) => {
     }
 
     seterror()
+    setisLoading(true)
 
     try {
       // Upload image if present
@@ -64,6 +67,8 @@ const Signup = ({ setcurrentPage }) => {
       } else {
         seterror("Something went wrong. Please try again!")
       }
+    } finally {
+      setisLoading(false)
     }
   }
   return (
@@ -77,7 +82,7 @@ const Signup = ({ setcurrentPage }) => {
           <Input type='email' value={email} onChange={({ target }) => setemail(target.value)} label='Email Address' placeholder='harsh@gmail.com' />
           <Input type='password' value={password} onChange={({ target }) => setpassword(target.value)} label='Password' placeholder='Min 8 Character' />
           {error && <p className='text-red-500 text-xs'>{error}</p>}
-          <button type='submit' className='btn-primary'>Signup</button>
+          <button type='submit' className='btn-primary' disabled={isLoading}>{isLoading && <SpinnerLoader/>}Signup</button>
           <p className='text-[13px] text-slate-800'>Already an Account?{""}
             <button className='font-medium text-primary underline cursor-pointer' onClick={() => setcurrentPage("login")}>Login</button>
           </p>
