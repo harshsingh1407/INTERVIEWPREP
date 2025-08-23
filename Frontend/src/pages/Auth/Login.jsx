@@ -63,9 +63,9 @@ const Login = ({setcurrentPage}) => {
         <Input type="text" value={email} onChange={({target})=> setemail(target.value)} label='Email Address' placeholder='harsh@gmail.com' />
         <Input type="password" value={password} onChange={({target})=> setpassword(target.value)} label='Password' placeholder='Min 8 Character' />
         {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
-        <button type='submit' className='btn-primary'>Login</button>
+        <button type='submit' className='btn-primary' disabled={isLoading}>{isLoading && <SpinnerLoader/>}Login</button>
         <p className='text-[13px] text-slate-800 mt-3'>Don't have an account?{""}
-          <button className=' w-full font-medium text-primary flex items-center justify-center gap-2 underline cursor-pointer' onClick={()=> { setcurrentPage("signup")}} disabled={isLoading}>{isLoading && <SpinnerLoader/>}Login</button>
+          <button className=' w-full font-medium text-primary flex items-center justify-center gap-2 underline cursor-pointer' onClick={()=> { setcurrentPage("signup")}}>Signup</button>
         </p>
       </form>
     </div>
