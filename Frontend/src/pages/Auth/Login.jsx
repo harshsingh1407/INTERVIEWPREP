@@ -6,11 +6,13 @@ import axiosInstance from '../../utils/axiosInstance.js';
 import { API_PATHS } from '../../utils/apiPaths.js';
 import Dashboard from '../Home/Dashboard.jsx';
 import { UserContext } from '../../context/userContext.jsx';
+import SpinnerLoader from '../../components/Loaders/SpinnerLoader.jsx';
 
 const Login = ({setcurrentPage}) => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [error, seterror] = useState(null);
+  const [isLoading, setisLoading] = useState(false);
 
   const {updateUser} = useContext(UserContext)
 
@@ -29,6 +31,7 @@ const Login = ({setcurrentPage}) => {
     }
     
     seterror("");
+    setisLoading(true);
 
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
@@ -60,7 +63,7 @@ const Login = ({setcurrentPage}) => {
         {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
         <button type='submit' className='btn-primary'>Login</button>
         <p className='text-[13px] text-slate-800 mt-3'>Don't have an account?{""}
-          <button className='font-medium text-primary underline cursor-pointer' onClick={()=> { setcurrentPage("signup")}}>Signup</button>
+          <button className='font-medium text-primary underline cursor-pointer' onClick={()=> { setcurrentPage("signup")}} disabled={isLoading}>{isLoading && <SpinnerLoader/>} Signup</button>
         </p>
       </form>
     </div>
