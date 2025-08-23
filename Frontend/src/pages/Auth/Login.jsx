@@ -65,7 +65,7 @@ const Login = ({setcurrentPage}) => {
         {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
         <button type='submit' className='btn-primary'>Login</button>
         <p className='text-[13px] text-slate-800 mt-3'>Don't have an account?{""}
-          <button className='font-medium text-primary underline cursor-pointer' onClick={()=> { setcurrentPage("signup")}} disabled={isLoading}>{isLoading && <SpinnerLoader/>} Signup</button>
+          <button className='font-medium text-primary flex items-center justify-center gap-2 underline cursor-pointer' onClick={()=> { setcurrentPage("signup")}} disabled={isLoading}>{isLoading && <SpinnerLoader/>}Login</button>
         </p>
       </form>
     </div>
