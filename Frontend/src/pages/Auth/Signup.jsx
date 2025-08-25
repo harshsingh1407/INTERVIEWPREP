@@ -8,7 +8,7 @@ import { API_PATHS } from '../../utils/apiPaths';
 // import uploadImage from '../../utils/uploadImage';
 import { validateEmail } from '../../utils/helper';
 import SpinnerLoader from '../../components/Loaders/SpinnerLoader';
-import { image } from '../../../../Backend/config/cloudinary';
+// import { image } from '../../../../Backend/config/cloudinary';
 
 const Signup = ({ setcurrentPage }) => {
   const [profilePic, setprofilePic] = useState(null);
