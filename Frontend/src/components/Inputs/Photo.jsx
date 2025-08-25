@@ -8,11 +8,12 @@
             const file = event.target.files[0];
             if(file) {
                 setImage(file);
-                const preview = URL.createObjectURL(file);
+                const localPreview = URL.createObjectURL(file);
+                setpreviewURL(localPreview)
                 if(setPreview) {
-                    setPreview(preview);
+                    setPreview(localPreview);
                 }
-                setpreviewURL(preview);
+                // setpreviewURL(preview);
             }
         }
 
@@ -37,7 +38,7 @@
             </div>
             ) : (
                 <div className='relative'>
-                    <img src={preview || previewURL || null} alt="Profile Photo" className='w-15 h-15 rounded-full object-cover' />
+                    <img src={preview || previewURL} alt="Profile Photo" className='w-15 h-15 rounded-full object-cover' />
                     <button type='button' className='w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1 cursor-pointer' onClick={handleRemovedImage}><LuTrash/></button>
                 </div>
             )}
