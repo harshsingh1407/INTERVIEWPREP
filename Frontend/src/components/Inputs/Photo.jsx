@@ -1,5 +1,6 @@
     import React, { useRef, useState } from 'react'
     import {LuUser, LuUpload, LuTrash} from 'react-icons/lu'
+    // import Default_Avtaar from '../../assets/default.png'
 
     const Photo = ({Image, setImage, preview, setPreview}) => {
         const inputRef = useRef();
@@ -38,7 +39,7 @@
             </div>
             ) : (
                 <div className='relative'>
-                    <img src={preview || previewURL} alt="Profile Photo" className='w-15 h-15 rounded-full object-cover' />
+                    <img src={preview || previewURL || "/default.png"} alt="Profile Photo" className='w-15 h-15 rounded-full object-cover' />
                     <button type='button' className='w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1 cursor-pointer' onClick={handleRemovedImage}><LuTrash/></button>
                 </div>
             )}
