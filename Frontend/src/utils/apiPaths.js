@@ -1,4 +1,4 @@
-export const BASE_URL = "https://interviewedge.onrender.com"
+export const BASE_URL = "https://interviewedge.onrender.com" // "http://localhost:8000"
 
 export const API_PATHS = {
     AUTH: {
@@ -16,12 +16,12 @@ export const API_PATHS = {
     SESSIONS: {
         CREATE: "/api/sessions/create", //Create a new interview session with questions
         GET_ALL: "/api/sessions/my-sessions", // Get all user session
-        GET_ONE: (id)=> `/api/sessions/${id}`, // Get session detailed with questions
-        DELETE: (id)=> `/api/sessions/${id}`, // Delete a session
+        GET_ONE: (id) => `/api/sessions/${id}`, // Get session detailed with questions
+        DELETE: (id) => `/api/sessions/${id}`, // Delete a session
     },
     QUESTION: {
         ADD_TO_SESSION: "/api/question/add", //Add more questions to session
-        PIN: (id)=> `/api/question/${id}/pin`, //Pin or unpin a question
-        UPDATE_NOTE: (id)=> `/api/questions/${id}/note`, //Update/Add a note to a question
+        PIN: (id) => `/api/question/${id}/pin`, //Pin or unpin a question
+        UPDATE_NOTE: (id) => `/api/questions/${id}/note`, //Update/Add a note to a question
     },
 }

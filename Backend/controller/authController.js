@@ -26,7 +26,7 @@ const registerUser = async (req, res) => {
         // Cloudinary Uploads 
         let profileImageUrl = null;
         if (req.file) {
-            profileImageUrl = req.file.path; 
+            profileImageUrl = req.file.path;
         }
         const user = await User.create({
             name,
