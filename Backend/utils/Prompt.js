@@ -1,24 +1,40 @@
-const questionAnswerPrompt = (role,experience, topicsToFocus, numberOfQuestions)=>(`
+const questionAnswerPrompt = (role, experience, topicsToFocus, numberOfQuestions) => `
     You are an AI trained to generate technical interview questions and answers.
 
-    Task:
-    - Role:${role}
+    Input Validation Step (CRITICAL):
+    Before generating questions, you MUST validate the input fields:
+    1. Target Position / Role: "${role}"
+    2. Focus Topics: "${topicsToFocus}"
+
+    Validation Rules:
+    - If the Target Position is not a valid, recognizable job role (e.g., it is random keysmash, gibberish like "hrluhkhueskjuerk", or meaningless text), it is INVALID.
+    - If the Focus Topics do not contain recognizable technical skills, concepts, programming languages, or frameworks (e.g., they are random keysmash like "eyuey, sgfkygf" or meaningless letters), they are INVALID.
+
+    If either input is INVALID:
+    - You MUST immediately stop and return ONLY a JSON object containing an "error" key with a clear, user-friendly description of the issue.
+    - Example error response:
+      {
+        "error": "The target position '${role}' is not a recognizable job role."
+      }
+    - DO NOT generate any questions or answers.
+
+    If the inputs are VALID, proceed with the task:
     - Candidate Experience: ${experience} years
-    - Focus Topics: ${topicsToFocus}
-    - Write ${numberOfQuestions} interview questions.
-    - For each questions, generate a detailed but beginner-friendly answer.
+    - Write ${numberOfQuestions} technical interview questions tailored to the candidate's experience level and focus topics.
+    - For each question, generate a detailed but beginner-friendly answer.
     - If the answer needs a code example, add a small code block inside.
     - Keep formatting very clean.
-    - Return a pure JSON array like:
-    [
+    - Return a pure JSON array of objects:
+      [
         {
-            "question":"Question here?",
-            "answer":"Answer here."
+          "question": "Question here?",
+          "answer": "Answer here."
         },
         ...
-    ]
-    Important: Do NOT add any extra text. Only return valid JSON.
-    `)
+      ]
+
+    Important: Do NOT add any extra text outside the JSON. Only return valid JSON.
+`;
 
 const conceptExplainPrompt = (question)=> `
     You are an AI trained to generate explanations for a given interview question.

@@ -29,7 +29,8 @@ exports.createSession = async (req,res)=>{
         await session.save()
         res.status(201).json({success:true,session})
     } catch (error) {
-        res.status(500).json({success:false,message:"Server Error"})
+        console.error("Error creating session:", error)
+        res.status(500).json({success:false,message: error.message || "Server Error"})
     }
 }
 

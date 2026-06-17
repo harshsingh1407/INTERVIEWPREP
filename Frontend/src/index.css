@@ -2,15 +2,16 @@
 @import "tailwindcss";
 
 @theme {
-    --font-display:"Urbanist", sans-serif;
-    --breakpoint-3xl:1920px;
-    --color-primary:#FF9324;
+    --font-display: "Urbanist", sans-serif;
+    --breakpoint-3xl: 1920px;
+    --color-primary: #FF9324;
 }
 
 @layer base {
     html {
         font-family: var(--font-display);
     }
+
     body {
         background-color: #fcfbfc;
         overflow-x: hidden;
@@ -22,7 +23,7 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(100,100,100,0.4);
+    background-color: rgba(100, 100, 100, 0.4);
     border-radius: 10px;
 }
 
@@ -35,6 +36,7 @@
         0% {
             background-position: 0% 50%;
         }
+
         100% {
             background-position: 100% 50%;
         }
@@ -46,35 +48,67 @@
 }
 
 @keyframes blob1 {
-    0%, 100% { transform: translate(0px,0px) scale(1); }
-    33% {transform: translate(30px, -60px) scale(1.1);}
-    66% {transform: translate(-20px, 20px) scale(0.9);}
+
+    0%,
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -60px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
 }
 
 @keyframes blob2 {
-    0%, 100% { transform: translate(0px,0px) scale(1); }
-    33% {transform: translate(-40px, 60px) scale(1.05);}
-    66% {transform: translate(20px, 40px) scale(0.95);}
+
+    0%,
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+        transform: translate(-40px, 60px) scale(1.05);
+    }
+
+    66% {
+        transform: translate(20px, 40px) scale(0.95);
+    }
 }
 
 @keyframes blob3 {
-    0%, 100% { transform: translate(0px,0px) scale(1); }
-    33% {transform: translate(20px, 140px) scale(1.15);}
-    66% {transform: translate(-30px, -30px) scale(0.85);}
+
+    0%,
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+        transform: translate(20px, 140px) scale(1.15);
+    }
+
+    66% {
+        transform: translate(-30px, -30px) scale(0.85);
+    }
 }
 
 .animate-blob1 {
     animation: blob1 8s ease-in-out infinite;
 }
+
 .animate-blob2 {
     animation: blob2 10s ease-in-out infinite;
 }
+
 .animate-blob3 {
     animation: blob1 12s ease-in-out infinite;
 }
 
 .input-box {
-    @apply w-full flex justify-between gap-3 text-sm text-black bg-gray-50/50 rounded px-4 py-3 mb-4 mt-3 border  border-gray-100 outline-none focus-within:border-orange-300;
+    @apply w-full flex justify-between gap-3 text-sm text-black bg-gray-50/50 rounded px-4 py-3 mb-4 mt-3 border border-gray-100 outline-none focus-within:border-orange-300;
 }
 
 .btn-primary {
